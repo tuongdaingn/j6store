@@ -1,0 +1,65 @@
+<div class="panel panel-default">
+    <div class="panel-heading">PRODUCT EDITION</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                <label for="image">
+                    <img ng-src="{{'/assets/images/'+ form.image}}" style="max-width: 100%; height: 80%;" alt="">
+                </label>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div>Name</div>
+                        <input type="text" class="form-control" ng-model="form.name">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>Price</div>
+                        <input  class="form-control" ng-model="form.price">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>Image</div>
+                        <input type="file" id="image" class="form-control" onchange="angular.element(this).scope().imageChanged(this.files)">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>Category</div>
+                       <select class="form-control" ng-model="form.category.id">
+                        <option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+                       </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div>Create Date</div>
+                        <input type="date" class="form-control" ng-model="form.createDate">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>Available?</div>
+                         <div class="form-control">
+                            <label class="radio-inline">
+                                <input type="radio" ng-value="true" name="available" ng-model="form.available"> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" ng-value="false" name="available" ng-model="form.available"> No
+                            </label>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer text-center">
+        <button class="btn btn-primary">
+            <b class="glyphicon glyphicon-plus" ng-click="create()">Create</b>
+        </button>
+        <button class="btn btn-success">
+            <b class="glyphicon glyphicon-save" ng-click="update()">Update</b>
+        </button>
+        <button class="btn btn-danger">
+            <b class="glyphicon glyphicon-trash" ng-click="delete(form)">Delete</b>
+        </button>
+        <button class="btn btn-info">
+            <b class="glyphicon glyphicon-refresh" ng-click="reset()">Reset</b>
+        </button>
+    </div>
+</div>

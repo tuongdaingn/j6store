@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+    <div class="container">
+        <main>
+             <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6">
+                    <img class="card-img-top mb-5 mb-md-0" th:src="@{|/assets/images/${item.image}|}" alt="" />
+                    </div>
+                    <div class="col-md-3">
+                        <h1 class="display-5 fw-bolder">[[${item.name}]]</h1>
+                        <div class="fs-5 mb-5">
+                            <h4>Giá tiền :[[${item.price}]]</h4>
+                        </div>
+                          <div class="fs-5 mb-5">
+                            <h4>Ngày :[[${item.createDate}]]</h4>
+                        </div>
+                          <div class="fs-5 mb-5">
+                            <h4>Loại sản phẩm :[[${item.category.name}]]</h4>
+                        </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+            <hr>
+            <div class="row col">
+                <div class="card border-warning mb-3" >
+                    <div class="card-header">
+                        Hàng Cùng loại
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li th:each=" p: ${item.category.products}">
+                            <a th:href="@{|/product/detail/${p.id}|}">
+                                <!-- <img th:src="@{|/assets/images/${p.image}|}" alt=""> -->
+                                [[${p.name}]]
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+
+</html>
